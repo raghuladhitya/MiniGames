@@ -18,7 +18,7 @@ int main(){
 	int size,i,j,value;
 	printf("\nEnter the box size of the box: ");
 	scanf("%d",&size);
-    value = size;
+        value = size;
 	int **box,count=1;
 
     box = (int **)malloc(size * sizeof(int *));                         //Constrction of the board with numerical values
@@ -31,12 +31,12 @@ int main(){
     } 
     
     display(box,value);                                                  
-	box = shuffle(box,value);                                            //shuffling the board randomly for 100 times 
+    box = shuffle(box,value);                                            //shuffling the board randomly for 100 times 
     display(box,value);
     box = play(box,value);                                               //User to use the arrow keys to play the game
     check(box,value);                                                    //checking whether the sliding puzzle is solved or not
     
-	return 0;
+    return 0;
 
 }
 int **play(int **box,int size){                                           // Method to perform the sliding operation
@@ -58,7 +58,7 @@ int **play(int **box,int size){                                           // Met
         switch(direction){                                                     //Sliding operation using while and switch cases
             case 72:
                 if(row + 1 < size){
-				    system("cls");
+		    system("cls");
                     box = swap(box,row,column,row+1,column,size);
                     row = row + 1;
                     display(box,size);
@@ -79,10 +79,10 @@ int **play(int **box,int size){                                           // Met
                     row = row - 1;
                     display(box,size);
                     count++;
-                    if(check(box,size)){
-					    printf("The puzzle is solved by %d moves",count);
-					    return box;
-					}
+                    if(check(box,size)) {
+			 printf("The puzzle is solved by %d moves",count);
+	        	 return box;
+		     }
                 }else{
                     printf("Out of Bounds");
                 }
@@ -90,12 +90,12 @@ int **play(int **box,int size){                                           // Met
 
             case 75:
                 if(column + 1 < size){
-				    system("cls");	
+		    system("cls");	
                     box = swap(box,row,column,row,column+1,size);
                     column = column + 1;
                     display(box,size);
                     count++;
-					if(check(box,size)){
+		    if(check(box,size)){
                         printf("The puzzle is solved by %d moves",count);
                         return box;
                     }
@@ -117,12 +117,12 @@ int **play(int **box,int size){                                           // Met
                     }
                 }else{
                     printf("\nOut of Bounds");
-			    }
+	        }
                 break;
             case 88:
-			    flag = 1;
+       	        flag = 1;
                 return box;
-                break;
+             
         }
     }
     return box;
@@ -160,7 +160,7 @@ int **shuffle(int **box,int size){                                              
                     column = column + 1;
                 }
                 break;
-			case 3:
+	    case 3:
                 if(column - 1 >= 0){
                     box = swap(box,row,column,row,column-1,size);
                     column = column - 1;
@@ -189,11 +189,11 @@ int check(int **box,int size){                                                  
 }
 int **swap(int **box,int row1,int col1,int row2,int col2,int size){                    //Swap function
     box[row2][col2] = box[row2][col2] + box[row1][col1];
-	box[row1][col1] = box[row2][col2] - box[row1][col1];
-	box[row2][col2] = box[row2][col2] - box[row1][col1];
+    box[row1][col1] = box[row2][col2] - box[row1][col1];
+    box[row2][col2] = box[row2][col2] - box[row1][col1];
 	
     if(box[row1][col1] == 0){
-	    box[row1][col1] = size*size;
+        box[row1][col1] = size*size;
     }else if(box[row2][col2] == 0){
         box[row1][col1] = size*size;
     }
@@ -203,8 +203,6 @@ int **swap(int **box,int row1,int col1,int row2,int col2,int size){             
 
 void display(int **box,int size){                                                       //Display function 
     int i,j;
-  
-  
     for(i=0;i<size;i++){
         printf("\n");
         printf("|\t");
