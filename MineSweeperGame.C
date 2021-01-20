@@ -107,7 +107,7 @@ bool startMinesweeperUntil(char virtualBoard[][30], char originalBoard[][30], in
 			virtualBoard[mines[i][0]][mines[i][1]]='*'; 
 		}
 		printBoard(virtualBoard); 
-		printf ("\nYou lost!\n"); 
+		printf ("\nYou lost the game\n"); 
 		return true; 
 	} 
 
