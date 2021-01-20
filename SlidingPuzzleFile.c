@@ -14,12 +14,11 @@ int **swap(int **box,int row1,int col1,int row2,int col2,int size);
 int arr[2];
 
 int main(){
-  
-	int size,i,j,value;
-	printf("\nEnter the box size of the box: ");
-	scanf("%d",&size);
-        value = size;
-	int **box,count=1;
+    int size,i,j,value; 
+    printf("\nEnter the box size of the box: ");
+    scanf("%d",&size);
+    value = size; 
+    int **box,count=1;
 
     box = (int **)malloc(size * sizeof(int *));                         //Constrction of the board with numerical values
     for(i=0;i<size;i++){
