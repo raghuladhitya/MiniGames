@@ -108,7 +108,7 @@ bool startMinesweeperUntil(char virtualBoard[][30], char originalBoard[][30], in
 		}
 		printBoard(virtualBoard); 
 		printf ("\nYou lost!\n"); 
-		return true ; 
+		return true; 
 	} 
 
 	else{                                       //
@@ -182,7 +182,6 @@ void placeMines(int mines[][2], char originalBoard[][30]){
 			i++;                                             // If it doesn't then it increments
 		} 
 	} 
-	return; 
 } 
 
 void setup(char originalBoard[][30], char virtualBoard[][30]) {  
@@ -192,7 +191,6 @@ void setup(char originalBoard[][30], char virtualBoard[][30]) {
 			virtualBoard[i][j] = originalBoard[i][j] = '-'; 
 		} 
 	} 
-	return; 
 } 
 
 void replaceMine(int row, int col, char board[][30]){ 
@@ -205,7 +203,6 @@ void replaceMine(int row, int col, char board[][30]){
 			} 
 		} 
 	} 
-	return; 
 } 
  
 void startMinesweeper() {      // 2nd this fn is called to start the game
@@ -239,7 +236,6 @@ void startMinesweeper() {      // 2nd this fn is called to start the game
 			gameover = true; 
 		} 
 	} 
-	return; 
 } 
 void difficultyLevel () { 
 	int level; 
@@ -253,16 +249,13 @@ void difficultyLevel () {
 	if(level == 1) { 
 		side = 9; 
 		mine = 10; 
-	} 
-	if(level == 2) { 
+	} else if(level == 2) { 
 		side = 16; 
 		mine = 40; 
-	} 
-	if(level == 3) { 
+	} else if(level == 3) { 
 		side = 24; 
 		mine = 100; 
 	} 
-	return; 
 } 
 
 int main() { 
