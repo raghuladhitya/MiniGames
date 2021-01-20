@@ -17,16 +17,17 @@ void makeMove(int *x, int *y) {                   // To get input from user as c
 void printBoard(char virtualBoard[][30]) {        // to print or display the game board
 	int i, j; 
 	printf(""); 
-	for (int i=0; i<side; i++) {  
-		for (j=0; j<side; j++) 
-			printf ("%c ", virtualBoard[i][j]); 
-		printf ("\n"); 
+	for(int i=0; i<side; i++) {  
+	     for(j=0; j<side; j++) {
+		printf ("%c ", virtualBoard[i][j]); 
+	     }
+	     printf ("\n"); 
 	} 
 	return; 
 } 
 
 bool Validate(int row, int col) {                   // to check there is no array index out of bounds
-	if((row >= 0) && (row < side) && (col >= 0) && (col < mine))
+  if((row >= 0) && (row < side) && (col >= 0) && (col < mine))
     return true;
   else
     return false;
@@ -34,10 +35,10 @@ bool Validate(int row, int col) {                   // to check there is no arra
 
  
 bool isMine(int row, int col, char board[][30]) {    // to check the chosed coordinate is mine or not
-	if(board[row][col] == '*') 
-		return true; 
-	else
-		return false; 
+     if(board[row][col] == '*') 
+	  return true; 
+     else
+	  return false; 
 } 
 
 int countAdjacentMines(int row, int col, int mines[][2], char originalBoard[][30]){ 
@@ -45,51 +46,51 @@ int countAdjacentMines(int row, int col, int mines[][2], char originalBoard[][30
 	int count = 0;                             // To validate adjacent 8 possible cases of mines or not 
  
 	if(Validate(row-1, col) == true) { 
-		if(isMine(row-1, col, originalBoard) == true) {
+	         if(isMine(row-1, col, originalBoard) == true) {
 			count++; 
-    }
+                 }
 	} 
 
 	if(Validate(row+1, col) == true) { 
 		if(isMine(row+1, col, originalBoard) == true) {
 			count++; 
-    }
+		}
 	} 
 
 	if(Validate(row, col+1) == true) { 
 		if(isMine(row, col+1, originalBoard) == true) {
-		  count++; 
-    }
+		  count++;
+		}
 	} 
 
 	if(Validate(row, col-1) == true) { 
 		if(isMine(row, col-1, originalBoard) == true) {
 		  count++; 
-    }
+		}
 	} 
 
 	if(Validate(row-1, col+1) == true) { 
 		if(isMine(row-1, col+1, originalBoard) == true) {
 		  count++; 
-    }
+		}
 	} 
 
 	if(Validate(row-1, col-1) == true) { 
 		if(isMine(row-1, col-1, originalBoard) == true) {
 		  count++; 
-    }
+		}
 	} 
  
 	if(Validate(row+1, col+1) == true) { 
 		if(isMine(row+1, col+1, originalBoard) == true) {
 		  count++; 
-    }
+		}
 	} 
 
 	if(Validate(row+1, col-1) == true) { 
 		if(isMine(row+1, col-1, originalBoard) == true) {
 		  count++; 
-    }
+		}
 	} 
 
 	return count; 
@@ -104,8 +105,8 @@ bool startMinesweeperUntil(char virtualBoard[][30], char originalBoard[][30], in
 
 		for(int i=0; i<mine; i++) {
 			virtualBoard[mines[i][0]][mines[i][1]]='*'; 
-    }
-		printBoard (virtualBoard); 
+		}
+		printBoard(virtualBoard); 
 		printf ("\nYou lost!\n"); 
 		return true ; 
 	} 
@@ -118,48 +119,48 @@ bool startMinesweeperUntil(char virtualBoard[][30], char originalBoard[][30], in
 		if(!count) { 
 			if(Validate(row-1, col-1) == true) { 
 				if(isMine(row-1, col-1, originalBoard) == false) {
-					startMinesweeperUntil(virtualBoard, originalBoard, mines, row-1, col-1, remainingMoves); 
-        }
+					startMinesweeperUntil(virtualBoard, originalBoard, mines, row-1, col-1, remainingMoves);
+				}
 			} 
 
 			if(Validate(row-1, col) == true) { 
 				if(isMine(row-1, col, originalBoard) == false) {
 				  startMinesweeperUntil(virtualBoard, originalBoard, mines, row-1, col, remainingMoves); 
-        }
+				}
 			} 
       
 			if(Validate(row-1, col+1) == true) { 
 				if(isMine(row-1, col+1, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row-1, col+1, remainingMoves); 
-        }
+				}
 			} 
 
 			if(Validate(row, col+1) == true) { 
 				if(isMine(row, col+1, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row, col+1, remainingMoves); 
-        }
-      } 
+				}
+			} 
       
 			if(Validate(row+1, col+1) == true) { 
 				if(isMine(row+1, col+1, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row+1, col+1, remainingMoves); 
-        }
+				}
 			} 
 
 			if(Validate(row+1, col) == true) { 
 				if(isMine(row+1, col, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row+1, col, remainingMoves); 
-        }
+				}
 			} 
-      if (Validate(row+1, col-1) == true) { 
+                        if (Validate(row+1, col-1) == true) { 
 				if (isMine(row+1, col-1, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row+1, col-1, remainingMoves); 
-        }
+				}
 			} 
 			if(Validate(row, col-1) == true) { 
 				if(isMine(row, col-1, originalBoard) == false) {
 					startMinesweeperUntil(virtualBoard, originalBoard, mines, row, col-1, remainingMoves); 
-        }
+				}
 			} 
 		} 
 		return false; 
@@ -181,7 +182,6 @@ void placeMines(int mines[][2], char originalBoard[][30]){
 			i++;                                             // If it doesn't then it increments
 		} 
 	} 
-
 	return; 
 } 
 
@@ -192,11 +192,10 @@ void setup(char originalBoard[][30], char virtualBoard[][30]) {
 			virtualBoard[i][j] = originalBoard[i][j] = '-'; 
 		} 
 	} 
-
 	return; 
 } 
 
-void replaceMine (int row, int col, char board[][30]){ 
+void replaceMine(int row, int col, char board[][30]){ 
 	for (int i=0; i<side; i++){ 
 		for (int j=0; j<side; j++){  
 			if(board[i][j] != '*') { 
